@@ -1,0 +1,24 @@
+.cards_1:hover,
+.cards_2:hover,
+.cards_3:hover,
+.cards_4:hover {
+  background-color: var(--bgPrimaryColor);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.cards_1 .icon,
+.cards_2 .icon,
+.cards_3 .icon,
+.cards_4 .icon {
+  transition: all 0.3s ease-in-out;
+}
+
+.cards_1:hover .icon,
+.cards_2:hover .icon,
+.cards_3:hover .icon,
+.cards_4:hover .icon {
+  color: var(--accentColor);
+  transform: scale(1.2);
+}
