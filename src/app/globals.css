@@ -6,6 +6,11 @@
   color: var(--textColor);
 }
 
+.contain {
+  @apply p-4 sm:p-6 md:p-8 lg:p-10;
+  background-color: var(--bg);
+  color: var(--textColor);
+}
 .dark {
   --bg: #131314;
   --bgSecondary: #1e1f20;
