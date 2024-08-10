@@ -95,20 +95,30 @@ const GeminiBody = () => {
             </div>
           </div>
         )}
-        <div className="absolute bottom-0 w-full max-w-[900px] px-5">
-          <form action={submit}>
-            <div className="flex colo mt-[100px] items-center justify-between gap-5 py-2.5 px-5 rounded-full">
-              <input
-                onChange={(e) => setInput(e.target.value)}
-                value={input}
-                type="text"
-                className="flex-1 bg-transparent border-none outline-none p-2 text-md text-gray-400"
-                placeholder="Enter a prompt here"
-              />
-              <div className="flex cursor-pointer">
-                <SendHorizontal type="submit" size={20} />
-              </div>
-            </div>
+      <div className="absolute bottom-0 w-full max-w-[900px] px-5">
+  <form
+    onSubmit={(e) => {
+      e.preventDefault(); // Prevent default form submission
+      submit(); // Call the submit function when the form is submitted
+    }}
+  >
+    <div className="flex colo mt-[100px] items-center justify-between gap-5 py-2.5 px-5 rounded-full">
+      <input
+        onChange={(e) => setInput(e.target.value)}
+        value={input}
+        type="text"
+        className="flex-1 bg-transparent border-none outline-none p-2 text-md text-gray-400"
+        placeholder="Enter a prompt here"
+      />
+      <div
+        className="flex cursor-pointer"
+        onClick={submit} // Trigger form submission on click
+      >
+        <SendHorizontal type="submit" size={20} />
+      </div>
+    </div>
+ 
+
           </form>
           <p className="text-gray-400 text-sm text-center p-3">
             Gemini may display inaccurate info, including about people, so
