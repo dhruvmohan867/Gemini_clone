@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { Context } from "@/context/ContextProvider";
 import NamePromptModal from './Name';
-
+import Image from 'next/image';
 
 const GeminiBody = () => {
   const {
@@ -57,7 +57,7 @@ const GeminiBody = () => {
                   />
                 </div>
                 <div className="cards_2 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
-                  <p>What's the reaction to and impact of autonomous vehicles?</p>
+                  <p>What&apos;s the reaction to and impact of autonomous vehicles?</p>
                   <Lightbulb
                     size={35}
                     className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
@@ -87,9 +87,9 @@ const GeminiBody = () => {
               <p>{recentPrompts}</p>
             </div>
             <div className="flex items-start gap-5">
-              <img src="/gemini.png" alt="" />
+              <Image src="/gemini.png" alt="Gemini" width={500} height={500} />
               <p
-                className="text-md font-normal loading-6 text-gray-400"
+                className="text-md font-normal leading-6 text-gray-400"
                 dangerouslySetInnerHTML={{ __html: result }}
               ></p>
             </div>
