@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   CircleUserRound,
   Compass,
@@ -9,6 +9,9 @@ import {
   SendHorizontal,
 } from "lucide-react";
 import { Context } from "@/context/ContextProvider";
+import NamePromptModal from './Name';
+
+
 const GeminiBody = () => {
   const {
     submit,
@@ -19,9 +22,16 @@ const GeminiBody = () => {
     input,
     setInput,
   } = useContext(Context);
-  console.log(loading, "loading");
+  const [name, setName] = useState("");
+  const [showModal, setShowModal] = useState(true);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="flex-1 min-h-[100vh] pb-[15vh] relative">
+      {showModal && <NamePromptModal setName={setName} closeModal={closeModal} />}
       <div className="flex items-center justify-between p-5 text-xl text-gray-400">
         <p>Gemini</p>
         <CircleUserRound size={40} className="text-softTextColor" />
@@ -32,39 +42,41 @@ const GeminiBody = () => {
             <div className="my-12 text-5xl font-medium p-5">
               <p>
                 <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                  Hello, Dhruv Mohan Shukla
+                  Hello, {name || "Guest"}
                 </span>
               </p>
               <p>How can I help you today?</p>
             </div>
-            <div className="grid grid-cols-4 gap-5 p-5">
-              <div className="h-48 p-4 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
-                <p>Suggest beautiful places to see on an upcoming road trip</p>
-                <Compass
-                  size={35}
-                  className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
-                />
-              </div>
-              <div className="h-48 p-4 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
-                <p>What’s the reaction to and impact of autonomous vehicles</p>
-                <Lightbulb
-                  size={35}
-                  className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
-                />
-              </div>
-              <div className="h-48 p-4 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
-                <p>Come up with a recipe for an upcoming event</p>
-                <Youtube
-                  size={35}
-                  className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
-                />
-              </div>
-              <div className="h-48 p-4 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
-                <p>Evaluate and rank common camera categories</p>
-                <Code
-                  size={35}
-                  className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
-                />
+            <div className="overflow-x-auto pb-2 flex">
+              <div className="flex fin gap-5 p-5">
+                <div className="cards_1 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
+                  <p>Suggest beautiful places to see on an upcoming road trip</p>
+                  <Compass
+                    size={35}
+                    className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
+                  />
+                </div>
+                <div className="cards_2 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
+                  <p>What's the reaction to and impact of autonomous vehicles?</p>
+                  <Lightbulb
+                    size={35}
+                    className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
+                  />
+                </div>
+                <div className="cards_3 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
+                  <p>Come up with a recipe for an upcoming event</p>
+                  <Youtube
+                    size={35}
+                    className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
+                  />
+                </div>
+                <div className="cards_4 bg-bgSecondaryColor rounded-xl relative cursor-pointer">
+                  <p>Evaluate and rank common camera categories</p>
+                  <Code
+                    size={35}
+                    className="p-1 absolute bottom-2 right-2 bg-bgPrimaryColor text-softTextColor rounded-full"
+                  />
+                </div>
               </div>
             </div>
           </>
@@ -83,9 +95,9 @@ const GeminiBody = () => {
             </div>
           </div>
         )}
-        <div className="absolute bottom-0 w-full max-w-[900px] px-5 m-auto">
+        <div className="absolute bottom-0 w-full max-w-[900px] px-5">
           <form action={submit}>
-            <div className="flex items-center justify-between gap-5 bg-bgSecondaryColor py-2.5 px-5 rounded-full">
+            <div className="flex colo mt-[100px] items-center justify-between gap-5 py-2.5 px-5 rounded-full">
               <input
                 onChange={(e) => setInput(e.target.value)}
                 value={input}

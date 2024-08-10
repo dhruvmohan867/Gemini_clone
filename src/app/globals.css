@@ -1,28 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.contain{
-  background-color: var(--bg);
-  color: var(--textColor);
-}
 
-
-.dark {
-  --bg: #131314;
-  --bgSecondary: #1e1f20;
-  --textColor: #444746;
-  --softBg: #1f273a;
-  --softTextColor: #a6a6a6;
-}
-
-.light {
+/* Theme variables */
+:root {
   --bg: white;
   --bgSecondary: #f1f5f9;
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
+  min-height: 100vh;
 }
 
-:root {
-  min-height: 100vh;
+.contain {
+  background-color: var(--bg); /* Applies the background color */
+  color: var(--textColor); /* Applies the text color */
+}
+
+.cards_1,
+.cards_2,
+.cards_3,
+.cards_4 {
+  min-width: 200px; /* Fixed minimum width for the cards */
+  max-width: 200px; /* Fixed maximum width for the cards */
+  height: 200px; /* Fixed height */
+  padding: 15px; /* Added padding to the cards */
+  flex-shrink: 0; /* Prevent the cards from shrinking */
+  scroll-snap-align: center; /* Snap the center of each card */
+  box-sizing: border-box; /* Ensure padding/border doesn't affect the width */
+  background-color: var(--bgSecondary); /* Ensure consistent background */
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px; /* Adjust gap between cards */
+  padding: 0 15px; /* Adjust padding for proper alignment */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Enable snap scrolling */
+}
+
+@media (min-width: 640px) {
+  .cards_1:hover,
+  .cards_2:hover,
+  .cards_3:hover,
+  .cards_4:hover {
+    background-color: var(--bgPrimaryColor);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .cards_1:hover .icon,
+  .cards_2:hover .icon,
+  .cards_3:hover .icon,
+  .cards_4:hover .icon {
+    color: var(--accentColor);
+    transform: scale(1.2);
+  }
+}
+
+.colo {
+  background-color: var(--bgSecondary);
+}
+
+@media (max-width: 600px) {
+  .cards_1:hover,
+  .cards_2:hover,
+  .cards_3:hover,
+  .cards_4:hover {
+    background-color: var(--bgPrimaryColor);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .fin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 100px;
+  }
+
+  .cards_1:hover .icon,
+  .cards_2:hover .icon,
+  .cards_3:hover .icon,
+  .cards_4:hover .icon {
+    color: var(--accentColor);
+    transform: scale(1.2);
+  }
 }
